@@ -299,7 +299,7 @@ h1, h2, h3, .font-serif {
 }
 
 /* ==========================================================================
-   3D Structural Book Deck UI Layout Component
+   Upgraded Anti-Flicker 3D Book Deck Showcase Engine
    ========================================================================== */
 .book-deck-container {
     position: relative;
@@ -307,12 +307,13 @@ h1, h2, h3, .font-serif {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 2rem 0;
 }
 
 .deck-hint {
     font-size: 0.75rem;
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     display: flex;
@@ -332,11 +333,11 @@ h1, h2, h3, .font-serif {
 
 .book-deck {
     position: relative;
-    width: min(100%, 290px);
+    width: min(100%, 260px);
     aspect-ratio: 2 / 3;
     perspective: 2000px;
     transform-style: preserve-3d;
-    transition: transform var(--transition-smooth);
+    transition: transform 0.5s ease;
 }
 
 .deck-card {
@@ -345,12 +346,11 @@ h1, h2, h3, .font-serif {
     height: 100%;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease, border-color 0.3s ease;
-    cursor: pointer;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85);
     background: #090d16;
     border: 1px solid rgba(255, 255, 255, 0.03);
-    will-change: transform;
+    will-change: transform, opacity;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, border-color 0.3s ease;
 }
 
 .deck-card img {
@@ -359,31 +359,23 @@ h1, h2, h3, .font-serif {
     object-fit: cover;
 }
 
-/* Dynamic 3D Structural Stack Matrix rules */
-.deck-card:nth-child(1) {
-    transform: translateZ(40px) translateX(0px) rotate(-6deg);
-    z-index: 3;
-}
+/* Resting Matrix Stack Rules */
+.deck-card:nth-child(1) { transform: translateZ(30px) translateX(0) rotate(-4deg); z-index: 3; }
+.deck-card:nth-child(2) { transform: translateZ(0) translateX(25px) rotate(1deg); z-index: 2; opacity: 0.85; }
+.deck-card:nth-child(3) { transform: translateZ(-30px) translateX(50px) rotate(6deg); z-index: 1; opacity: 0.6; }
 
-.deck-card:nth-child(2) {
-    transform: translateZ(0px) translateX(35px) rotate(1deg);
-    z-index: 2;
-    opacity: 0.85;
-}
+/* Controlled Parent Hover Fan Out Separation */
+.book-deck:hover .deck-card:nth-child(1) { transform: translateZ(40px) translateX(-70px) rotate(-8deg); }
+.book-deck:hover .deck-card:nth-child(2) { transform: translateZ(20px) translateX(0) rotate(0deg); opacity: 0.95; }
+.book-deck:hover .deck-card:nth-child(3) { transform: translateZ(0px) translateX(70px) rotate(8deg); opacity: 0.95; }
 
-.deck-card:nth-child(3) {
-    transform: translateZ(-40px) translateX(70px) rotate(8deg);
-    z-index: 1;
-    opacity: 0.55;
-}
-
-/* Premium Stack Hover States */
-.deck-card:hover {
-    transform: translateZ(100px) translateY(-25px) rotate(-8deg) !important;
-    z-index: 10 !important;
+/* Individual Card Elevation Point Separation Lock */
+.book-deck .deck-card:hover {
+    transform: translateZ(120px) translateY(-20px) rotate(0deg) !important;
+    z-index: 20 !important;
     opacity: 1 !important;
-    border-color: var(--border-hover);
-    box-shadow: 0 40px 80px -20px var(--accent-glow), 0 0 30px rgba(251, 191, 36, 0.15);
+    border-color: var(--accent-gold);
+    box-shadow: 0 35px 70px -15px var(--accent-glow), 0 0 30px rgba(251, 191, 36, 0.2);
 }
 
 /* ==========================================================================
@@ -728,7 +720,7 @@ h1, h2, h3, .font-serif {
     max-height: 420px;
     overflow-y: auto;
     border: 1px solid var(--border-color);
-    background: #ffffff; /* Contrast backdrop for clean embedding reading */
+    background: #ffffff;
 }
 
 /* Custom Scrollbar configuration for compact wrapper feeds */
@@ -859,6 +851,12 @@ h1, h2, h3, .font-serif {
     font-weight: 300;
 }
 
+.drawer-shop-wrapper {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
 /* ==========================================================================
    Global Footer Layout Element
    ========================================================================== */
@@ -924,6 +922,9 @@ h1, h2, h3, .font-serif {
         margin: 0 auto;
     }
     
+    .book-deck:hover .deck-card:nth-child(1) { transform: translateZ(20px) translateX(-50px) rotate(-6deg); }
+    .book-deck:hover .deck-card:nth-child(3) { transform: translateZ(-20px) translateX(50px) rotate(6deg); }
+    
     .events-split-layout {
         grid-template-columns: 1fr;
         gap: 4rem;
@@ -973,4 +974,7 @@ h1, h2, h3, .font-serif {
     .btn {
         width: 100%;
     }
+    
+    .book-deck:hover .deck-card:nth-child(1) { transform: translateZ(10px) translateX(-30px) rotate(-4deg); }
+    .book-deck:hover .deck-card:nth-child(3) { transform: translateZ(-10px) translateX(30px) rotate(4deg); }
 }

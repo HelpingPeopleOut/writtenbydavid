@@ -1,7 +1,8 @@
-// 1. Data Matrix for Excerpt Drawer
+// 1. Data Matrix featuring clean shop link profiles integrated for Interactive Previews
 const excerptDatabase = {
     fluff: {
         title: "Ball of Fluff",
+        shopUrl: "https://www.amazon.com/dp/B0C7DXKLXL",
         paragraphs: [
             "The ambient fluorescent hum of the pet store felt small against the backdrop of the quiet city outside. He walked past rows of glass terrariums, his breath catching slightly behind his mask.",
             "Then he saw it—a small, dynamic ball of gray fluff sitting resolutely in the corner of an oversized cage. The cat didn't meow; it just stared back with deep amber eyes.",
@@ -10,6 +11,7 @@ const excerptDatabase = {
     },
     storyteller: {
         title: "Storyteller",
+        shopUrl: "https://www.amazon.com/dp/B0DZXNJLMY",
         paragraphs: [
             "Ink bleeds out across the crisp white lines of a notebook pad, catching the shadows left behind by sleepless nights.",
             "To build an architectural palace inside an unstable mind requires a foundation built entirely on unfiltered truth. Every phrase is a mirror; every cadence is a step toward dynamic resilience.",
@@ -18,6 +20,7 @@ const excerptDatabase = {
     },
     frat: {
         title: "Frat Boy",
+        shopUrl: "https://www.amazon.com/dp/B0GWMJBN1F",
         paragraphs: [
             "Jared adjusted the collar of his fraternity crest polo shirt, checking his reflection in the mirrored glass of the student union lobby. Status was security.",
             "But standing at the edge of the campus protest square, watching Monica Rodriguez speak fiercely without notes, the old security rules felt strangely fragile.",
@@ -28,7 +31,7 @@ const excerptDatabase = {
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 2. Custom Cursor Physics (Desktop Only)
+    // 2. Custom Cursor Physics
     const dot = document.querySelector('.cursor-dot');
     const outline = document.querySelector('.cursor-outline');
     const hoverTargets = document.querySelectorAll('.hover-target');
@@ -39,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const posY = e.clientY;
             dot.style.left = `${posX}px`;
             dot.style.top = `${posY}px`;
-            // Add a slight delay to the outline for a fluid dragging effect
             outline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
 
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Magnetic Button Effect
+    // 3. Magnetic Button Layout Functionality
     const magneticBtns = document.querySelectorAll('.magnetic');
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 4. 3D Tilt Hover Effect for Cards
+    // 4. 3D Card Hover Tilt Effects
     const tiltElements = document.querySelectorAll('.interactive-tilt');
     tiltElements.forEach(el => {
         el.addEventListener('mousemove', (e) => {
@@ -72,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg tilt
+            const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
             
             el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
@@ -82,17 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 5. 3D Hero Deck Mouse Parallax
+    // 5. 3D Hero Deck Center-Parallax Tracker Physics
     const heroDeck = document.getElementById('heroDeck');
     if (heroDeck) {
         window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.clientX) / 50;
-            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            const x = (window.innerWidth / 2 - e.clientX) / 60;
+            const y = (window.innerHeight / 2 - e.clientY) / 60;
             heroDeck.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
         });
     }
 
-    // 6. Interactive Excerpt Drawer
+    // 6. Interactive Excerpt Drawer with Shop Link Module Generation
     const initializeExcerptDrawer = () => {
         const deckCards = document.querySelectorAll('.deck-card');
         const overlayDrawer = document.getElementById('excerptDrawer');
@@ -106,10 +108,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (dataObj) {
                     drawerBody.innerHTML = `
                         <h3>${dataObj.title}</h3>
+                        <h5>Chapter Preview</h5>
                         ${dataObj.paragraphs.map(p => `<p>${p}</p>`).join('')}
+                        <div class="drawer-shop-wrapper">
+                            <a href="${dataObj.shopUrl}" target="_blank" rel="noopener" class="btn btn-primary target-shop hover-target">
+                                Purchase on Amazon
+                            </a>
+                        </div>
                     `;
                     overlayDrawer.classList.add('active');
                     document.body.style.overflow = 'hidden';
+                    
+                    // Attach dynamic cursor support hooks onto the newly generated button elements safely
+                    const shopBtn = drawerBody.querySelector('.target-shop');
+                    if (shopBtn) {
+                        shopBtn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovering'));
+                        shopBtn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovering'));
+                    }
                 }
             });
         });
@@ -127,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // 7. Event Timeline Automation
+    // 7. Event Timeline Date Evaluation Automation Tracker
     const evaluateTimelineDates = () => {
         const liveEvents = document.querySelectorAll('.timeline-card.live-event');
         const pastSection = document.getElementById('pastSection');
@@ -147,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // 8. Smooth Reveal Observer
+    // 8. Smooth Entrance Scroll Fade Observer
     const initializeScrollAnimations = () => {
         const animatedElements = document.querySelectorAll('[data-fade]');
         const observer = new IntersectionObserver((entries) => {
