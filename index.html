@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Alejandro | Official Author Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">David Alejandro</a>
+            <div class="nav-links">
+                <a href="#books" class="nav-link">Books</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#social" class="nav-link">Social Hub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-grid container">
+            <div class="hero-text" data-fade>
+                <span class="hero-tag">Official Author Portfolio</span>
+                <h1 class="hero-title">Stories Written at the Intersection of <span>Identity & Resilience</span></h1>
+                <p class="hero-subtitle">David Alejandro crafts raw, compelling narratives probing mental health, culture, and power structures within modern society.</p>
+                <div class="hero-actions">
+                    <a href="#books" class="btn btn-primary">Explore Books</a>
+                    <a href="#events" class="btn btn-secondary">View Events</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="book-deck-container">
+                    <p class="deck-hint">Click a cover to preview excerpt</p>
+                    <div class="book-deck">
+                        <div class="deck-card active" data-book="fluff">
+                            <img src="https://m.media-amazon.com/images/I/61uBDFubUeL._SX445_.jpg" alt="Ball of Fluff Cover">
+                        </div>
+                        <div class="deck-card" data-book="storyteller">
+                            <img src="https://m.media-amazon.com/images/I/71fGEn4vjFL._SY522_.jpg" alt="Storyteller Cover">
+                        </div>
+                        <div class="deck-card" data-book="frat">
+                            <img src="https://m.media-amazon.com/images/I/619o5SWfi8L._SY522_.jpg" alt="Frat Boy Cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="excerpt-overlay" id="excerptDrawer">
+        <div class="excerpt-content">
+            <button class="close-drawer" aria-label="Close Preview">&times;</button>
+            <div class="excerpt-body" id="excerptBody">
+                </div>
+        </div>
+    </div>
+
+    <section id="books" class="books-section container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Publications</h2>
+            <p class="section-desc">Dive deep into contemporary fiction, short prose, and emotional poetry collections.</p>
+        </div>
+
+        <div class="books-grid">
+            <div class="book-card" data-fade>
+                <div class="book-img-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/61uBDFubUeL._SX445_.jpg" alt="Ball of Fluff" class="book-cover-art">
+                </div>
+                <div class="book-meta">
+                    <div class="book-authors">David Alejandro (Author) &bull; Javier Alcala (Illustrator)</div>
+                    <h3 class="book-title">Ball of Fluff</h3>
+                    <p class="book-synopsis">This adult-humored narrative portrays a person battling anxiety, depression, and loneliness during the pandemic, who seeks comfort in a pet store. He adopts an indoor cat to help cope with the loss of a loved one. However, the feline’s constant need for attention and developing real-world dynamics trigger beautiful tensions, showing that owning a pet is a deeply valuable life responsibility.</p>
+                    <div class="book-footer">
+                        <a href="https://www.amazon.com/dp/B0C7DXKLXL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Purchase on Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card" data-fade>
+                <div class="book-img-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/71fGEn4vjFL._SY522_.jpg" alt="Storyteller" class="book-cover-art">
+                </div>
+                <div class="book-meta">
+                    <div class="book-authors">David Alejandro (Author)</div>
+                    <h3 class="book-title">Storyteller</h3>
+                    <div class="badge badge-warning">Trigger Warning: Intense Themes</div>
+                    <p class="book-synopsis">A compelling collection of short stories and personal poetry delving into the intersections of raw creativity and mental health. Through vivid imagery and raw emotion, Alejandro captures the struggles, deep resilience, and true elegance found uniquely inside the human experience, offering an unfiltered window straight into an artist's complex mind.</p>
+                    <div class="book-footer">
+                        <span class="btn btn-secondary btn-sm disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card" data-fade>
+                <div class="book-img-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/619o5SWfi8L._SY522_.jpg" alt="Frat Boy" class="book-cover-art">
+                </div>
+                <div class="book-meta">
+                    <div class="book-authors">David Alejandro (Author)</div>
+                    <h3 class="book-title">Frat Boy</h3>
+                    <p class="book-synopsis">A gripping coming-of-conscience novel tracking Jared Jimenez, a first-generation Latino student who views his high fraternity status as his ultimate armor. When he meets Monica Rodriguez, a politically fearless student voice, he is thrust directly into campus friction. When a complex secret links Monica back to his own brotherhood house, loyalty suddenly morphs into something highly dangerous.</p>
+                    <div class="book-footer">
+                        <span class="btn btn-secondary btn-sm disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="events-section">
+        <div class="container">
+            <div class="events-split-layout">
+                <div class="events-sticky-header">
+                    <h2 class="section-title">Speaking & Open Mics</h2>
+                    <p class="section-desc">Experience spoken word poetry and live book reading engagements as they happen locally and globally.</p>
+                </div>
+                
+                <div class="events-timeline">
+                    <div id="upcomingSection">
+                        <h4 class="timeline-group-title">Current Engagements</h4>
+                        <div class="timeline-card live-event" data-event-date="2026-06-19">
+                            <div class="event-date-badge">
+                                <span class="month">JUN</span>
+                                <span class="day">19</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="badge badge-live">Upcoming Live Event</div>
+                                <h3 class="event-title">Creative Collective Showcase</h3>
+                                <p class="event-desc">Join David Alejandro for a special live open mic and spoken word performance exploring select poetry collections from his book Storyteller.</p>
+                                <div class="embed-wrapper compact">
+                                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZD7ZE1PNY1/" data-instgrm-version="14"></blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pastSection">
+                        <h4 class="timeline-group-title">Historic Archives</h4>
+                        <div class="timeline-card past-event">
+                            <div class="event-details">
+                                <h3 class="event-title">Valley Rox Open Mic Series</h3>
+                                <div class="embed-wrapper compact">
+                                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DY-m9kXyRNH/" data-instgrm-version="14"></blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card past-event">
+                            <div class="event-details">
+                                <h3 class="event-title">The Creative Collective Sessions</h3>
+                                <div class="embed-wrapper compact">
+                                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DX-QL90EmOn/" data-instgrm-version="14"></blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-card past-event">
+                            <div class="event-details">
+                                <h3 class="event-title">Creative Collective Feature Readings</h3>
+                                <div class="embed-wrapper compact">
+                                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXfS3fmEnWW/" data-instgrm-version="14"></blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social" class="social-section container">
+        <div class="section-header text-center">
+            <h2 class="section-title">The Social Hub</h2>
+            <p class="section-desc">Follow the creative journey up close on Instagram via <a href="https://www.instagram.com/writtenbydavidd" target="_blank" rel="noopener">@writtenbydavidd</a></p>
+        </div>
+
+        <div class="social-masonry">
+            <div class="social-box" data-fade>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS8lFo3ko3D/" data-instgrm-version="14"></blockquote>
+            </div>
+            <div class="social-box" data-fade>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DX-6i24FCBH/" data-instgrm-version="14"></blockquote>
+            </div>
+            <div class="social-box" data-fade>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DHSIdcuvtEg/" data-instgrm-version="14"></blockquote>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 David Alejandro. All Rights Reserved. Crafted with Literary Excellence.</p>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/writtenbydavidd" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.amazon.com/dp/B0C7DXKLXL" target="_blank" rel="noopener">Amazon Author Page</a>
+            </div>
+        </div>
+    </footer>
+
+    <script async src="https://www.instagram.com/embed.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
