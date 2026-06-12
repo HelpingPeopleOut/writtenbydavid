@@ -1,21 +1,15 @@
-/**
- * David Alejandro - Modern Architectural Event Portfolio & Excerpt Matrix Engine
- */
-
-// 1. Data Matrix Storage for Premium Dynamic Interactive Text-Excerpt Drawer Module
+// 1. Data Matrix for Excerpt Drawer
 const excerptDatabase = {
     fluff: {
         title: "Ball of Fluff",
-        sub: "Chapter Extract Preview",
         paragraphs: [
             "The ambient fluorescent hum of the pet store felt small against the backdrop of the quiet city outside. He walked past rows of glass terrariums, his breath catching slightly behind his mask.",
-            "Then he saw it—a small, dynamic ball of gray fluff sitting resolutely in the corner of an oversized cage. The cat didn't meow; it just stared back with deep amber eyes that seemed to understand the heavy weight of isolation.",
-            "\"He doesn't like most people,\" the store associate noted quietly from the aisle corridor. But as David reached out his hand, a tiny paw met the glass cleanly."
+            "Then he saw it—a small, dynamic ball of gray fluff sitting resolutely in the corner of an oversized cage. The cat didn't meow; it just stared back with deep amber eyes.",
+            "\"He doesn't like most people,\" the store associate noted quietly. But as David reached out, a tiny paw met the glass cleanly."
         ]
     },
     storyteller: {
         title: "Storyteller",
-        sub: "Selected Poetic Stanzas",
         paragraphs: [
             "Ink bleeds out across the crisp white lines of a notebook pad, catching the shadows left behind by sleepless nights.",
             "To build an architectural palace inside an unstable mind requires a foundation built entirely on unfiltered truth. Every phrase is a mirror; every cadence is a step toward dynamic resilience.",
@@ -24,9 +18,8 @@ const excerptDatabase = {
     },
     frat: {
         title: "Frat Boy",
-        sub: "Chapter 1 Opening Sequence",
         paragraphs: [
-            "Jared adjusted the collar of his fraternity crest polo shirt, checking his reflection in the mirrored glass of the student union building lobby. Status was security. He had memorized that rule growing up watching his mother struggle.",
+            "Jared adjusted the collar of his fraternity crest polo shirt, checking his reflection in the mirrored glass of the student union lobby. Status was security.",
             "But standing at the edge of the campus protest square, watching Monica Rodriguez speak fiercely without notes, the old security rules felt strangely fragile.",
             "She looked directly into the crowd, and for a fleeting, unstable moment, her gaze locked right onto his. The system suddenly looked entirely different from the inside out."
         ]
@@ -35,38 +28,71 @@ const excerptDatabase = {
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 2. Automated Event Timeline Archive Logic Engine
-    const evaluateTimelineDates = () => {
-        const liveEvents = document.querySelectorAll('.timeline-card.live-event');
-        const pastSection = document.getElementById('pastSection');
-        
-        // Accurate real-time date evaluation wrapper instantiation
-        const systemCurrentTime = new Date();
+    // 2. Custom Cursor Physics (Desktop Only)
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+    const hoverTargets = document.querySelectorAll('.hover-target');
 
-        liveEvents.forEach(eventCard => {
-            const rawTargetDate = eventCard.getAttribute('data-event-date');
-            if (rawTargetDate) {
-                const eventTargetTime = new Date(rawTargetDate + 'T23:59:59');
-                
-                // Switch DOM positioning if event target timeframe has elapsed
-                if (systemCurrentTime > eventTargetTime) {
-                    eventCard.classList.remove('live-event');
-                    eventCard.classList.add('past-event');
-                    
-                    // Strip modern upcoming display UI component items cleanly
-                    const liveBadge = eventCard.querySelector('.badge-live');
-                    if (liveBadge) liveBadge.remove();
-                    
-                    // Append beautifully down into historic archives pipeline
-                    if (pastSection) {
-                        pastSection.appendChild(eventCard);
-                    }
-                }
-            }
+    if (window.matchMedia("(pointer: fine)").matches && dot && outline) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+            // Add a slight delay to the outline for a fluid dragging effect
+            outline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
-    };
 
-    // 3. Interactive Reading Intro UI Controller Actions
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovering'));
+            target.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovering'));
+        });
+    }
+
+    // 3. Magnetic Button Effect
+    const magneticBtns = document.querySelectorAll('.magnetic');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px) scale(1)`;
+        });
+    });
+
+    // 4. 3D Tilt Hover Effect for Cards
+    const tiltElements = document.querySelectorAll('.interactive-tilt');
+    tiltElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg tilt
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = `perspective(1000px) rotateX(0) rotateY(0) translateY(0)`;
+        });
+    });
+
+    // 5. 3D Hero Deck Mouse Parallax
+    const heroDeck = document.getElementById('heroDeck');
+    if (heroDeck) {
+        window.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            heroDeck.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    }
+
+    // 6. Interactive Excerpt Drawer
     const initializeExcerptDrawer = () => {
         const deckCards = document.querySelectorAll('.deck-card');
         const overlayDrawer = document.getElementById('excerptDrawer');
@@ -77,23 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
             card.addEventListener('click', () => {
                 const bookKey = card.getAttribute('data-book');
                 const dataObj = excerptDatabase[bookKey];
-
                 if (dataObj) {
-                    // Inject beautiful markup arrays dynamically into viewport container
                     drawerBody.innerHTML = `
                         <h3>${dataObj.title}</h3>
-                        <h5>${dataObj.sub}</h5>
                         ${dataObj.paragraphs.map(p => `<p>${p}</p>`).join('')}
                     `;
-                    
-                    // Activate structural interactive presentation display modes
                     overlayDrawer.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Lock background scrolling
+                    document.body.style.overflow = 'hidden';
                 }
             });
         });
 
-        // Interactive Interface Safe Closures Mapping
         const closeDrawerAction = () => {
             overlayDrawer.classList.remove('active');
             document.body.style.overflow = '';
@@ -107,30 +127,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // 4. Subtle Intersect Viewport Smooth Entrance Transition Animation Engine
+    // 7. Event Timeline Automation
+    const evaluateTimelineDates = () => {
+        const liveEvents = document.querySelectorAll('.timeline-card.live-event');
+        const pastSection = document.getElementById('pastSection');
+        const systemTime = new Date();
+
+        liveEvents.forEach(eventCard => {
+            const rawTargetDate = eventCard.getAttribute('data-event-date');
+            if (rawTargetDate) {
+                const eventTime = new Date(rawTargetDate + 'T23:59:59');
+                if (systemTime > eventTime) {
+                    eventCard.classList.replace('live-event', 'past-event');
+                    const badge = eventCard.querySelector('.badge-live');
+                    if (badge) badge.remove();
+                    if (pastSection) pastSection.appendChild(eventCard);
+                }
+            }
+        });
+    };
+
+    // 8. Smooth Reveal Observer
     const initializeScrollAnimations = () => {
         const animatedElements = document.querySelectorAll('[data-fade]');
-        
-        const elementObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    elementObserver.unobserve(entry.target);
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
         animatedElements.forEach(el => {
-            // Setup static layout initial states safely before animation runs
             el.style.opacity = '0';
-            el.style.transform = 'translateY(25px)';
+            el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-            elementObserver.observe(el);
+            observer.observe(el);
         });
     };
 
-    // Initialize all modular scripts sequentially
     evaluateTimelineDates();
     initializeExcerptDrawer();
     initializeScrollAnimations();
